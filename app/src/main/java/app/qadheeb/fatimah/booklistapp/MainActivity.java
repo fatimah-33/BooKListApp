@@ -27,6 +27,8 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 
+import static java.lang.String.valueOf;
+
 public class MainActivity extends AppCompatActivity {
     private static final String MY_LIST_KEY = "bookList";
     private ListView bookListView;
@@ -61,13 +63,13 @@ public class MainActivity extends AppCompatActivity {
                 String inputSearchText = searchEditText.getText().toString().replace(" ", "+");
                 if (checkNetworkConnection() == true) {
                     if (inputSearchText.isEmpty()) {
-                        textViewNote.setText(R.string.no_search_word);
+                        textViewNote.setText(getString(R.string.no_search_word));
                     } else {
                         newUrl = bookApiLink.concat(inputSearchText);
                         new SetBookListTask().execute();
                     }
                 } else {
-                    textViewNote.setText(R.string.no_connection);
+                    textViewNote.setText(getString(R.string.no_connection));
 
                 }
 
@@ -164,12 +166,13 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                     } else {
-                        authorName = "" + R.string.no_author;
+                        authorName = getString(R.string.no_author);
                     }
                     bookArrayList.add(new BookObjects(bookTitle, authorName));
                 }
             } else {
-                textViewNote.setText(R.string.no_books);
+                textViewNote.setText(getString(R.string.no_books));
+
             }
         } catch (JSONException e) {
             e.printStackTrace();
