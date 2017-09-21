@@ -6,14 +6,17 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<BookObjects> bookArrayList;
     private TextView textViewNote;
     private String bookTitle;
-    private String authorName;
+    private String authorName = "";
     private String newUrl;
     private String bookApiLink = "https://www.googleapis.com/books/v1/volumes?q=";
 
@@ -141,16 +144,33 @@ public class MainActivity extends AppCompatActivity {
             JSONObject jsonObject = new JSONObject(jsonData);
             JSONArray jsonArray = jsonObject.getJSONArray("items");
             if (jsonArray.length() > 0) {
-                for (int i = 0; ; i++) {
+                for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonFirstFetch = jsonArray.getJSONObject(i);
                     JSONObject jsonObjectRequiredData = jsonFirstFetch.getJSONObject("volumeInfo");
+                    JSONArray authorArray = jsonObjectRequiredData.optJSONArray("authors");
                     bookTitle = jsonObjectRequiredData.getString("title");
-                    authorName = jsonObjectRequiredData.getString("authors");
+                    authorName = "";
+                    if (authorArray != null) {
+                        for (int j = 0; j < authorArray.length(); j++) {
+                            String author = authorArray.getString(j);
+                            if (authorName.isEmpty()) {
+                                authorName = author;
+                            } else if (j == authorArray.length() - 1) {
+                                authorName = authorName + " and " + author;
+
+                            } else {
+                                authorName = authorName + ", " + author;
+                            }
+                        }
+
+                    } else {
+                        authorName = "" + R.string.no_author;
+                    }
                     bookArrayList.add(new BookObjects(bookTitle, authorName));
                 }
+            } else {
+                textViewNote.setText(R.string.no_books);
             }
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -160,7 +180,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        //TODO YOUR STUDENT LIST
         outState.putParcelableArrayList(MY_LIST_KEY, bookArrayList);
     }
 

@@ -25,7 +25,7 @@
         android:id="@+id/search_button"
         android:background="#339cff"
         android:textColor="#ffffff"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textStyle="bold"
        />
 
@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/text_view_note"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:background="#cce6ff"/>
 
     <ListView

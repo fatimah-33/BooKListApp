@@ -2,4 +2,9 @@
     <string name="app_name">BookListApp</string>
     <string name="no_search_word">PLease, Enter a Search Word</string>
     <string name="no_connection">PLease, Be sure to connect to a network</string>
+    <string name="no_books">Sorry,No books found</string>
+    <string name="no_author">Author name is not available</string>
+
+
+
 </resources>
