@@ -5,41 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="5dp"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
+    android:paddingTop="5dp"
     tools:context="app.qadheeb.fatimah.booklistapp.MainActivity">
 
     <EditText
+        android:id="@+id/edit_text_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:background="#cce6ff"
         android:hint="Enter a Search Word"
-        android:id="@+id/edit_text_search"
-        android:background="#cce6ff"/>
+        android:inputType="textPersonName" />
 
     <Button
-        android:text="Search"
+        android:id="@+id/search_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/search_button"
         android:background="#339cff"
+        android:text="Search"
         android:textColor="#ffffff"
         android:textSize="20sp"
-        android:textStyle="bold"
-       />
+        android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/text_view_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/text_view_note"
-        android:textSize="20sp"
-        android:background="#cce6ff"/>
+        android:background="#cce6ff"
+        android:textSize="20sp" />
 
     <ListView
         android:id="@+id/list_book"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-       />
+        android:layout_weight="1" />
 </LinearLayout>

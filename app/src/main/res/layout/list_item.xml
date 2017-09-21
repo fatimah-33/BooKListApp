@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:orientation="vertical">
 
     <TextView
-        android:text="TextView"
+        android:id="@+id/book_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/book_title"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:text="TextView"
         android:textColor="@color/colorPrimary"
-         />
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <TextView
-        android:text="TextView"
+        android:id="@+id/author_name"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:id="@+id/author_name"
         android:layout_weight="1"
-        android:textSize="25sp"
+        android:text="TextView"
         android:textColor="@color/colorPrimaryDark"
+        android:textSize="25sp"
 
         />
 
