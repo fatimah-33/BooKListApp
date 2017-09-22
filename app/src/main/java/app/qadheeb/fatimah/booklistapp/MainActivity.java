@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -91,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 String getReadableData = makeTheDataReadable(inputStream);
                 if (getReadableData != null) {
                     jasonReadableText = passingJSONObject(getReadableData);
+
                 }
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -104,9 +106,16 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(ArrayList<BookObjects> result) {
-            bookListView = (ListView) findViewById(R.id.list_book);
-            bookAdapter = new BookAdapter(MainActivity.this, result);
-            bookListView.setAdapter(bookAdapter);
+            if (result.isEmpty()) {
+                bookListView = (ListView) findViewById(R.id.list_book);
+                bookAdapter = new BookAdapter(MainActivity.this, result);
+                bookListView.setAdapter(bookAdapter);
+                textViewNote.setText(getString(R.string.no_books));
+            } else {
+                bookListView = (ListView) findViewById(R.id.list_book);
+                bookAdapter = new BookAdapter(MainActivity.this, result);
+                bookListView.setAdapter(bookAdapter);
+            }
         }
 
         @Override
@@ -166,13 +175,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                     bookArrayList.add(new BookObjects(bookTitle, authorName));
                 }
-            } else {
-                textViewNote.setText(getString(R.string.no_books));
-
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
         return bookArrayList;
     }
 
