@@ -4,6 +4,9 @@
     <string name="no_connection">PLease, Be sure to connect to a network</string>
     <string name="no_books">Sorry,No books found</string>
     <string name="no_author">Author name is not available</string>
+    <string name="hint_search_bar">Enter a Search Word</string>
+    <string name="text_button">Search</string>
+
 
 
 

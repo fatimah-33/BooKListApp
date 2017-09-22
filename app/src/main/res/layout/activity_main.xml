@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#cce6ff"
-        android:hint="Enter a Search Word"
+        android:hint="@string/hint_search_bar"
         android:inputType="textPersonName" />
 
     <Button
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#339cff"
-        android:text="Search"
+        android:text="@string/text_button"
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold" />
